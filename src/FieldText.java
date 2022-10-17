@@ -15,20 +15,11 @@ public class FieldText {
         }
 
 
-        public static String setPickLanguage(String Language) throws FileNotFoundException {
+        public static File setPickLanguage(String Language) throws FileNotFoundException {
 
-                if(Language.equals("Dansk") || Language.equals("Danish")){
-                        File danishfile = new File("Dansk.txt");
-                        Scanner scan = new Scanner(danishfile);
+                File danishfile = new File(Language + ".txt");
+                Scanner scan = new Scanner(danishfile);
 
-
-                        int filenum = (int) danishfile.length();
-                        for(int i = 0; i < 1; i++) {
-                                System.out.println(scan.nextLine());
-                        }
-                        return "Works";
+                return danishfile;
                 }
-                else
-                        return "Try Again";
-        }
 }
