@@ -1,10 +1,19 @@
 public class Account {
 
-private int balance = 1000;
+    private int balance;
 
-    public int updateBalance(int effectValue) {
+    public Account(int startBalance){
+        this.balance = startBalance;
+    }
 
-        return this.balance = this.balance + (effectValue);
+    // Getter
+    public int getBalance() {
+        return balance;
+    }
+
+    //Setter
+    public void updateBalance(int effectValue) {
+        this.balance = this.balance + (effectValue);
     }
 
 
