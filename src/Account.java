@@ -1,9 +1,11 @@
 public class Account {
 
-private int balance;
+public int balance = 1000;
 
-    public static void changeBalance(int balance) {
+    public int updateBalance(int effectValue) {
 
+        return this.balance = this.balance + (effectValue);
     }
+
 
 }
