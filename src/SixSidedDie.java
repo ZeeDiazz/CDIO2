@@ -10,7 +10,4 @@ public class SixSidedDie extends Die {
     public void roll() {
         face = rng.nextInt(6) + 1;
     }
-    public int getFace() {
-        return face;
-    }
 }
