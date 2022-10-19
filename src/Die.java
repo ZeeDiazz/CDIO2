@@ -1,19 +1,9 @@
-//Taget fra CDIO1
-import java.util.Random;
-public class Die {
+public abstract class Die {
+    protected int face;
 
-    private int faceValue;
-    private Random rng;
+    public abstract void roll();
 
-    //Construktur for Die class.
-
-    public Die() {
-        rng = new Random();
-    }
-    public void roll() {
-        faceValue = rng.nextInt(6) + 1;
-    }
-    public int getFaceValue() {
-        return faceValue;
+    public int getFace() {
+        return face;
     }
 }
