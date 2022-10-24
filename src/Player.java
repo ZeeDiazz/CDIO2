@@ -1,7 +1,8 @@
 import java.util.Scanner;
+
 public class Player {
     public final String name;
-    private int currentBalance;
+    private Account account;
 public Player(int playerNum){
     Scanner scanner = new Scanner(System.in);
     System.out.println(playerNum);
@@ -9,7 +10,6 @@ public Player(int playerNum){
     //test commit
 }
 public int getAccount() {
-    // forstår ikke hvorfor den ikke 'kalder' på klassen Account
-    return currentBalance; }
+    return account.getBalance(); }
 }
 
