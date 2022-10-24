@@ -1,3 +1,5 @@
+package main;
+
 public class DieCup {
     private Die d1;
     private Die d2;

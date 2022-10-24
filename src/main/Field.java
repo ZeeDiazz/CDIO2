@@ -1,7 +1,9 @@
+package main;
+
 public class Field {
     private int moneyChange;
     private Effect effect;
-    // private FieldText text; (not written yet)
+    // private main.FieldText text; (not written yet)
 
     public Field(int moneyChange, Effect effect) {
         this.moneyChange = moneyChange;
