@@ -17,4 +17,7 @@ public class DieCup {
     public int getSum() {
         return d1.getFace() + d2.getFace();
     }
+    public boolean isPair() {
+        return d1.getFace() == d2.getFace();
+    }
 }
