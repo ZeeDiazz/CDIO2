@@ -1,4 +1,4 @@
-package main;
+package main.java;
 
 public class DieCup {
     private Die d1;

@@ -1,9 +1,9 @@
-package main;
+package main.java;
 
 public class Field {
     private int moneyChange;
     private Effect effect;
-    // private main.FieldText text; (not written yet)
+    // private main.java.FieldText text; (not written yet)
 
     public Field(int moneyChange, Effect effect) {
         this.moneyChange = moneyChange;

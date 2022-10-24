@@ -1,4 +1,4 @@
-package main;//Taget fra CDIO1
+package main.java;//Taget fra CDIO1
 import java.util.Random;
 public class SixSidedDie extends Die {
     private final Random rng;
