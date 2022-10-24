@@ -7,13 +7,6 @@ import java.util.Scanner;
 //Buffered reader
 
 public class FieldText {
-    public static void main(String[] args) throws FileNotFoundException {
-        String[] pickLanguage = setPickLanguage("Dansk");
-
-        for (int i = 0; i < pickLanguage.length; i++) {
-            System.out.println(pickLanguage[i]);
-        }
-    }
 
 
     public static String[] setPickLanguage(String Language) throws FileNotFoundException {

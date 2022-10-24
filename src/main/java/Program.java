@@ -10,6 +10,7 @@ public class Program {
 
         SixSidedDie d1 = new SixSidedDie();
         SixSidedDie d2 = new SixSidedDie();
+
         DieCup cup = new DieCup(d1, d2);
         Game game = new Game();
 
@@ -21,18 +22,27 @@ public class Program {
             getPermissionToRoll(currentlyPlaying);
 
             // Get the result of the dice roll and the corresponding field
+            cup.roll();
             int rollSum = cup.getSum();
-            Field landedOn = game.getField(rollSum);
+            Field landedOn = game.getField(rollSum - 1);
 
             // Inform the player of the place they landed
             showFieldInfo(landedOn);
 
-            // Tell the game, the player has ended their turn
-            game.nextTurn();
+            currentlyPlaying.Account.updateBalance(landedOn.getMoneyChange());
+            System.out.printf("You now have %d money\n\n", currentlyPlaying.Account.getBalance());
+
+            if (landedOn.getEffect() == Effect.ExtraTurn) {
+                System.out.println("You get an extra turn!");
+            }
+            else {
+                // Tell the game, the player has ended their turn
+                game.nextTurn();
+            }
         }
 
-        System.out.println("Congratulations " + game.getWinner() + " you won!");
-        System.out.println("Better luck next time " + game.getLoser());
+        System.out.println("Congratulations " + game.getWinner().name + " you won!");
+        System.out.println("Better luck next time " + game.getLoser().name);
     }
 
     private static void getPermissionToRoll(Player player) {
@@ -48,6 +58,6 @@ public class Program {
     }
 
     private static void showFieldInfo(Field field) {
-        // TODO: print name and maybe description of landed field, as well as the effect it has
+        System.out.printf("You landed on %s and is paid %d\n", field.getName(), field.getMoneyChange());
     }
 }

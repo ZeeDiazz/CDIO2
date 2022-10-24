@@ -1,12 +1,11 @@
 package main.java;
 
-import java.util.Scanner;
-
 public class Player {
     public final String name;
-    public Player(int playerNum){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(playerNum);
-        this.name=scanner.nextLine();
+    public final Account Account;
+    public Player(String playerName, int startingBalance){
+        this.name = playerName;
+
+        this.Account = new Account(startingBalance);
     }
 }
