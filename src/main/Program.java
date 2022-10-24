@@ -25,7 +25,7 @@ public class Program {
             Field landedOn = game.getField(rollSum);
 
             // Inform the player of the place they landed
-            printFieldData(landedOn);
+            showFieldInfo(landedOn);
 
             // Tell the game, the player has ended their turn
             game.nextTurn();
@@ -47,7 +47,7 @@ public class Program {
         }
     }
 
-    private static void printFieldData(Field field) {
+    private static void showFieldInfo(Field field) {
         // TODO: print name and maybe description of landed field, as well as the effect it has
     }
 }
