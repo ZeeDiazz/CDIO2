@@ -27,6 +27,7 @@ public class Program {
             Field landedOn = game.getField(rollSum - 1);
 
             // Inform the player of the place they landed
+            System.out.println("You rolled " + cup.toString());
             showFieldInfo(landedOn);
 
             currentlyPlaying.Account.updateBalance(landedOn.getMoneyChange());

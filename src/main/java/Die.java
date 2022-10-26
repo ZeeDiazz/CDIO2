@@ -8,4 +8,9 @@ public abstract class Die {
     public int getFace() {
         return face;
     }
+
+    @Override
+    public String toString() {
+        return "" + getFace();
+    }
 }

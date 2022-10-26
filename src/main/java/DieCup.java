@@ -20,4 +20,9 @@ public class DieCup {
     public boolean isPair() {
         return d1.getFace() == d2.getFace();
     }
+
+    @Override
+    public String toString() {
+        return d1.toString() + " & " + d2.toString();
+    }
 }
