@@ -17,13 +17,7 @@ public class Game {
 
         this.fields = new Field[12];
 
-        String[] fieldNames = {"", "Tower", "Crater", "Palace Gates", "Cold Desert", "Walled City", "Monastery", "Black Cave", "Huts in the Mountain", "The Werewall", "The Pit", "Goldmine"};
-        int[] fieldMoneyChange = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
-        Effect[] fieldEffect = {Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.ExtraTurn, Effect.Nothing, Effect.Nothing};
-        for (int i = 0; i < 12; i++) {
-            this.fields[i] = new Field(fieldNames[i], fieldMoneyChange[i], fieldEffect[i]);
-        }
-
+        setNewLanguage("en");
         this.currentPlayerIndex = 0;
     }
 
@@ -72,6 +66,13 @@ public class Game {
     }
 
     public void setNewLanguage(String newLanguage) {
+        LanguageManager.loadLanguage(newLanguage);
+        String[] names = LanguageManager.getNames();
+        int[] fieldMoneyChanges = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
+        Effect[] fieldEffects = {Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.ExtraTurn, Effect.Nothing, Effect.Nothing};
+        for (int i = 0; i < this.fields.length; i++) {
+            this.fields[i] = new Field(names[i], fieldMoneyChanges[i], fieldEffects[i]);
+        }
         // TODO: implement this
     }
 }
