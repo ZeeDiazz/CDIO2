@@ -14,6 +14,12 @@ public class DieCup {
         d2.roll();
     }
 
+    public int getValueOfDie1() {
+        return d1.getFace();
+    }
+    public int getValueOfDie2() {
+        return d2.getFace();
+    }
     public int getSum() {
         return d1.getFace() + d2.getFace();
     }
