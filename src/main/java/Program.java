@@ -59,6 +59,18 @@ public class Program {
     }
 
     private static void showFieldInfo(Field field) {
-        System.out.printf("You landed on %s and is paid %d\n", field.getName(), field.getMoneyChange());
+        int moneyChange = field.getMoneyChange();
+        String prompt = "You landed on " + field.getName();
+
+        if (moneyChange > 0) {
+            prompt += " and is paid " + field.getMoneyChange();
+        }
+        else if (moneyChange < 0) {
+            prompt += " and have to pay " + Math.abs(field.getMoneyChange());
+        }
+        else {
+            prompt += " and get some free rest";
+        }
+        System.out.println(prompt);
     }
 }
