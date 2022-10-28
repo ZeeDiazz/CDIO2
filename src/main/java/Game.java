@@ -1,5 +1,6 @@
 package main.java;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Game {
@@ -10,12 +11,18 @@ public class Game {
     private Player winner;
     private Player loser;
 
-    public Game() {
+    private FieldText text;
+
+    public Game() throws FileNotFoundException {
+        this.text = new FieldText();
+        String[] pickLanguage = text.setPickLanguage("Dansk");
+
         this.players = new Player[2];
-        this.players[0] = new Player(getPlayerName("Player 1 enter your name:", null), 1000);
-        this.players[1] = new Player(getPlayerName("Player 2 enter your name:", null), 1000);
+        this.players[0] = new Player(getPlayerName(pickLanguage[0], null), 1000);
+        this.players[1] = new Player(getPlayerName(pickLanguage[1], null), 1000);
 
         this.fields = new Field[12];
+
 
         String[] fieldNames = {"", "Tower", "Crater", "Palace Gates", "Cold Desert", "Walled City", "Monastery", "Black Cave", "Huts in the Mountain", "The Werewall", "The Pit", "Goldmine"};
         int[] fieldMoneyChange = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};

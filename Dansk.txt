@@ -1,16 +1,21 @@
-"Hvad er dit navn player 1?"
-"Hvad er dit navn player 2?"
-"har nu X points."
-"Du er landet på feltet."
-"Du har fundet Drønnings hjemmelige tårn, hun betaler dig 250 for at være stille."
-"Du har fundet din vej til en ny karter, dog er det ulovligt, du skal betale 100 i bøde :("
-"Du er ved palads porte, du stjæler et stykke mursten, og sælger det til 100."
-"Du er ved en kold ørken, Sandfolk tager skat fra dig, du midster 20."
-"Du er ankommet til befæstet by, du break danser din vej til 180."
-"Du er ved kloster og får en ny ven :)"
-"Du er ved et mørkt sort grotte, du er bange og får en medarbejder med dig, du midster 70"
-"Du har fundet nogle hytter i bjergene, du finder et spicielt sted og sælger den for 60"
-"Du elsker at klatlere op af vægge, dog denne gang kommer der en varulve og stjæler 80 af dig, du løber hurtigt væk der fra"
-"Du er inde i en hulle, hvor en rotte kommer og stjæler 50 af dig"
-"Du har fundet guld i bjergene og sælger det for 650, du er rig!"
-"har vundet spillet."
+Hvad er dit navn player 1?
+Hvad er dit navn player 2?
+Du rolled
+har nu X penge.
+Du er landet på feltet.
+Du får en ekstra tur!
+Du har fundet Drønnings hjemmelige tårn, hun betaler dig 250 for at være stille.
+Du har fundet din vej til en ny karter, dog er det ulovligt, du skal betale 100 i bøde :(
+Du er ved palads porte, du stjæler et stykke mursten, og sælger det til 100.
+Du er ved en kold ørken, Sandfolk tager skat fra dig, du midster 20.
+Du er ankommet til befæstet by, du break danser din vej til 180.
+Du er ved kloster og får en ny ven :)
+Du er ved et mørkt sort grotte, du er bange og får en medarbejder med dig, du midster 70
+Du har fundet nogle hytter i bjergene, du finder et spicielt sted og sælger den for 60
+Du elsker at klatlere op af vægge, dog denne gang kommer der en varulve og stjæler 80 af dig, du løber hurtigt væk der fra
+Du er inde i en hulle, hvor en rotte kommer og stjæler 50 af dig
+Du har fundet guld i bjergene og sælger det for 650, du er rig!
+Tillykke!
+har vundet spillet.
+Held og lykke næste gang
+indtast 'kast' (eller 'k') for at kaste terning
