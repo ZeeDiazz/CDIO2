@@ -26,6 +26,18 @@ class AccountTest {
     }
 
     @Test
+    void getBalance_balanceAtSmallNegative() {
+        Account acct = new Account(-2000);
+        assertEquals(-2000, acct.getBalance());
+    }
+
+    @Test
+    void getBalance_balanceAtBigNegative() {
+        Account acct = new Account(-987654321);
+        assertEquals(-987654321, acct.getBalance());
+    }
+
+    @Test
     void updateBalance_withZero() {
         Account acct = new Account(1000);
         acct.updateBalance(0);
