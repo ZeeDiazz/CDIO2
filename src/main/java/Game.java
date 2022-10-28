@@ -28,7 +28,7 @@ public class Game {
         int[] fieldMoneyChange = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
         Effect[] fieldEffect = {Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.ExtraTurn, Effect.Nothing, Effect.Nothing};
         for (int i = 0; i < 12; i++) {
-            this.fields[i] = new Field(fieldNames[i], fieldMoneyChange[i], fieldEffect[i]);
+            this.fields[i] = new Field(pickLanguage[i], fieldMoneyChange[i], fieldEffect[i]);
         }
 
         this.currentPlayerIndex = 0;
