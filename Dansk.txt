@@ -19,3 +19,4 @@ Tillykke!
 har vundet spillet.
 Held og lykke næste gang
 indtast 'kast' (eller 'k') for at kaste terning
+Klar når du er!

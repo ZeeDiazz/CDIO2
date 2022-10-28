@@ -7,6 +7,7 @@ public class Program {
     private static Scanner in;
     static FieldText text = new FieldText();
 
+
     public static void main(String[] args) throws FileNotFoundException {
         in = new Scanner(System.in);
 
@@ -15,6 +16,8 @@ public class Program {
 
         DieCup cup = new DieCup(d1, d2);
         Game game = new Game();
+
+        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
         String[] pickLanguage = text.setPickLanguage("Dansk");
 
         while (!game.someoneHasWon()) {
@@ -52,6 +55,8 @@ public class Program {
 
     private static void getPermissionToRoll(Player player) throws FileNotFoundException {
         String playerInput;
+
+        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
         String[] pickLanguage = text.setPickLanguage("Dansk");
         while (true) {
             System.out.println(player.name +" "+ pickLanguage[20]);
@@ -59,7 +64,7 @@ public class Program {
             if (playerInput.equals("kast") || playerInput.equals("k")) {
                 break;
             }
-            System.out.println("Ready when you are!");
+            System.out.println(pickLanguage[21]);
         }
     }
 
