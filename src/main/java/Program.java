@@ -30,7 +30,8 @@ public class Program {
             // Get the result of the dice roll and the corresponding field
             cup.roll();
             int rollSum = cup.getSum();
-            Field landedOn = game.getField(rollSum - 1);
+            //index 1 findes ikke derfor trækker man 2 fra
+            Field landedOn = game.getField(rollSum - 2);
 
             // Inform the player of the place they landed
             System.out.println(LanguageManager.insertValuesInPrototype(landedOnPromptDesign, cup.getValueOfDie1(), cup.getValueOfDie2()));
