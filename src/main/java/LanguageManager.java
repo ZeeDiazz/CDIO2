@@ -1,7 +1,6 @@
 package main.java;
 
 import java.io.*;
-import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -13,10 +12,17 @@ public class LanguageManager {
     public static final String[] LangCodes;
     private static String[] names;
     private static String[] descriptions;
+    private static HashMap<PlayerUpdate, String> playerUpdatePrompts;
+    private static String winnerMessageDesign;
+    private static String loserMessageDesign;
 
     static {
         names = new String[12];
         descriptions = new String[12];
+        playerUpdatePrompts = new HashMap<>();
+        for (PlayerUpdate update : PlayerUpdate.values()) {
+            playerUpdatePrompts.put(update, update.name());
+        }
 
         ArrayList<String> codes = new ArrayList<>();
         Pattern textFilePattern = Pattern.compile("text\\.[a-z][a-z]\\.ini");
@@ -37,12 +43,8 @@ public class LanguageManager {
             LangCodes[i] = currentCode;
         }
 
-        boolean success = loadLanguage(defaultLanguage);
-        if (!success) {
-            success = loadLanguage(LangCodes[0]);
-            if (!success) {
-                throw new RuntimeException("No language files");
-            }
+        if (LangCodes.length == 0) {
+            throw new RuntimeException("No language files");
         }
     }
 
@@ -103,6 +105,18 @@ public class LanguageManager {
                         descriptions[index] = value;
                     }
                 }
+                else if (key.endsWith("Prompt")) {
+                    PlayerUpdate update = PlayerUpdate.valueOf(key.replace("Prompt", ""));
+                    playerUpdatePrompts.replace(update, value);
+                }
+                else if (key.endsWith("Message")) {
+                    if (key.startsWith("Winner")) {
+                        winnerMessageDesign = value;
+                    }
+                    else if (key.startsWith("Loser")) {
+                        loserMessageDesign = value;
+                    }
+                }
             }
         }
         catch (IOException e) {
@@ -116,5 +130,26 @@ public class LanguageManager {
 
     public static String[] getDescriptions() {
         return descriptions;
+    }
+
+    public static String getPrompt(PlayerUpdate promptType) {
+        return playerUpdatePrompts.get(promptType);
+    }
+
+    public static String getWinnerMessageDesign() {
+        return winnerMessageDesign;
+    }
+
+    public static String getLoserMessageDesign() {
+        return loserMessageDesign;
+    }
+
+    public static String insertValuesInPrototype(String stringPrototype, Object... values) {
+        String prompt = stringPrototype;
+        for (int i = 0; i < values.length; i++) {
+            String currentTarget = "{" + i + "}";
+            prompt = prompt.replace(currentTarget, values[i].toString());
+        }
+        return prompt;
     }
 }

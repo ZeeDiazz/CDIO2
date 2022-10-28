@@ -1,29 +1,28 @@
 package main.java;
 
-import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Game {
     private Player[] players;
     private int currentPlayerIndex;
     private Field[] fields;
+    private String getNamePrompt;
 
     private Player winner;
     private Player loser;
 
-    private FieldText text;
+    public Game(String gameLanguage) {
+        this.fields = new Field[12];
+        setLanguage(gameLanguage);
 
-    public Game() throws FileNotFoundException {
-        this.text = new FieldText();
-        String[] pickLanguage = text.setPickLanguage("Dansk");
+        String playerNamePromptDesign = LanguageManager.getPrompt(PlayerUpdate.AskPlayerForName);
+        String player1NamePrompt = LanguageManager.insertValuesInPrototype(playerNamePromptDesign, 1);
+        String player2NamePrompt = LanguageManager.insertValuesInPrototype(playerNamePromptDesign, 2);
 
         this.players = new Player[2];
-        this.players[0] = new Player(getPlayerName(pickLanguage[0], null), 1000);
-        this.players[1] = new Player(getPlayerName(pickLanguage[1], null), 1000);
+        this.players[0] = new Player(getPlayerName(player1NamePrompt, null), 1000);
+        this.players[1] = new Player(getPlayerName(player2NamePrompt, null), 1000);
 
-        this.fields = new Field[12];
-
-        setNewLanguage("en");
         this.currentPlayerIndex = 0;
     }
 
@@ -47,7 +46,7 @@ public class Game {
 
     public void nextTurn() {
         Player currentlyPlaying = getPlayingPlayer();
-        if (currentlyPlaying.Account.getBalance() >= 3000) {
+        if (currentlyPlaying.Account.getBalance() >= 1100) {
             this.winner = currentlyPlaying;
         }
 
@@ -71,7 +70,7 @@ public class Game {
         return loser;
     }
 
-    public void setNewLanguage(String newLanguage) {
+    public void setLanguage(String newLanguage) {
         LanguageManager.loadLanguage(newLanguage);
         String[] names = LanguageManager.getNames();
         int[] fieldMoneyChanges = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
@@ -79,6 +78,5 @@ public class Game {
         for (int i = 0; i < this.fields.length; i++) {
             this.fields[i] = new Field(names[i], fieldMoneyChanges[i], fieldEffects[i]);
         }
-        // TODO: implement this
     }
 }

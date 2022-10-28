@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Program {
     private static Scanner in;
-    static FieldText text = new FieldText();
 
 
     public static void main(String[] args) throws FileNotFoundException {
@@ -15,13 +14,13 @@ public class Program {
         SixSidedDie d2 = new SixSidedDie();
 
         DieCup cup = new DieCup(d1, d2);
-        Game game = new Game();
+        Game game = new Game("da");
 
-        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
-        String[] pickLanguage = text.setPickLanguage("Dansk");
+        String landedOnPromptDesign = LanguageManager.getPrompt(PlayerUpdate.DiceResult);
+        String newBalancePromptDesign = LanguageManager.getPrompt(PlayerUpdate.UpdatedBalance) + "\n";
+        String extraTurnPrompt = LanguageManager.getPrompt(PlayerUpdate.ExtraTurn);
 
         while (!game.someoneHasWon()) {
-
             // Get the player whose turn it is
             Player currentlyPlaying = game.getPlayingPlayer();
 
@@ -34,14 +33,14 @@ public class Program {
             Field landedOn = game.getField(rollSum - 1);
 
             // Inform the player of the place they landed
-            System.out.println(pickLanguage[2] + " " +  cup.toString());
+            System.out.println(LanguageManager.insertValuesInPrototype(landedOnPromptDesign, cup.getValueOfDie1(), cup.getValueOfDie2()));
             showFieldInfo(landedOn);
 
             currentlyPlaying.Account.updateBalance(landedOn.getMoneyChange());
-            System.out.printf("You now have %d money\n\n", currentlyPlaying.Account.getBalance());
+            System.out.println(LanguageManager.insertValuesInPrototype(newBalancePromptDesign, currentlyPlaying.Account.getBalance()));
 
             if (landedOn.getEffect() == Effect.ExtraTurn) {
-                System.out.println("You get an extra turn!");
+                System.out.println(extraTurnPrompt);
             }
             else {
                 // Tell the game, the player has ended their turn
@@ -49,38 +48,42 @@ public class Program {
             }
         }
 
-        System.out.println(pickLanguage[17] + " " + game.getWinner().name + " " + pickLanguage[18]);
-        System.out.println(pickLanguage[19] + " " + game.getLoser().name);
+        String winnerMessageDesign = LanguageManager.getWinnerMessageDesign();
+        String loserMessageDesign = LanguageManager.getLoserMessageDesign();
+
+        System.out.println(LanguageManager.insertValuesInPrototype(winnerMessageDesign, game.getWinner().name));
+        System.out.println(LanguageManager.insertValuesInPrototype(loserMessageDesign, game.getLoser().name));
     }
 
-    private static void getPermissionToRoll(Player player) throws FileNotFoundException {
+    private static void getPermissionToRoll(Player player) {
         String playerInput;
 
-        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
-        String[] pickLanguage = text.setPickLanguage("Dansk");
+        String rollPromptDesign = LanguageManager.getPrompt(PlayerUpdate.ThrowDice);
+        String rollPrompt = LanguageManager.insertValuesInPrototype(rollPromptDesign, "r");
         while (true) {
-            System.out.println(player.name +" "+ pickLanguage[20]);
+            System.out.println(rollPrompt);
             playerInput = in.nextLine().toLowerCase();
-            if (playerInput.equals("kast") || playerInput.equals("k")) {
+            if (playerInput.equals("r")) {
                 break;
             }
-            System.out.println(pickLanguage[21]);
+            System.out.println("Not recognized");
         }
     }
 
     private static void showFieldInfo(Field field) {
         int moneyChange = field.getMoneyChange();
-        String prompt = "You landed on " + field.getName();
 
+        String promptDesign;
         if (moneyChange > 0) {
-            prompt += " and is paid " + field.getMoneyChange();
+            promptDesign = LanguageManager.getPrompt(PlayerUpdate.GetPaid);
         }
         else if (moneyChange < 0) {
-            prompt += " and have to pay " + Math.abs(field.getMoneyChange());
+            promptDesign = LanguageManager.getPrompt(PlayerUpdate.LoseMoney);
         }
         else {
-            prompt += " and get some free rest";
+            promptDesign = LanguageManager.getPrompt(PlayerUpdate.NoMoneyChange);
         }
+        String prompt = LanguageManager.insertValuesInPrototype(promptDesign, field.getName(), Math.abs(moneyChange));
         System.out.println(prompt);
     }
 }
