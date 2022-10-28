@@ -1,11 +1,14 @@
 package main.java;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Program {
     private static Scanner in;
+    static FieldText text = new FieldText();
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws FileNotFoundException {
         in = new Scanner(System.in);
 
         SixSidedDie d1 = new SixSidedDie();
@@ -14,7 +17,11 @@ public class Program {
         DieCup cup = new DieCup(d1, d2);
         Game game = new Game();
 
+        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
+        String[] pickLanguage = text.setPickLanguage("Dansk");
+
         while (!game.someoneHasWon()) {
+
             // Get the player whose turn it is
             Player currentlyPlaying = game.getPlayingPlayer();
 
@@ -27,7 +34,7 @@ public class Program {
             Field landedOn = game.getField(rollSum - 1);
 
             // Inform the player of the place they landed
-            System.out.println("You rolled " + cup.toString());
+            System.out.println(pickLanguage[2] + " " +  cup.toString());
             showFieldInfo(landedOn);
 
             currentlyPlaying.Account.updateBalance(landedOn.getMoneyChange());
@@ -42,19 +49,22 @@ public class Program {
             }
         }
 
-        System.out.println("Congratulations " + game.getWinner().name + " you won!");
-        System.out.println("Better luck next time " + game.getLoser().name);
+        System.out.println(pickLanguage[17] + " " + game.getWinner().name + " " + pickLanguage[18]);
+        System.out.println(pickLanguage[19] + " " + game.getLoser().name);
     }
 
-    private static void getPermissionToRoll(Player player) {
+    private static void getPermissionToRoll(Player player) throws FileNotFoundException {
         String playerInput;
+
+        //Hvis der var en engelsk fil, vil man kunne skrive engelsk og brug den.
+        String[] pickLanguage = text.setPickLanguage("Dansk");
         while (true) {
-            System.out.println(player.name + " type 'roll' (or 'r') to roll");
+            System.out.println(player.name +" "+ pickLanguage[20]);
             playerInput = in.nextLine().toLowerCase();
-            if (playerInput.equals("roll") || playerInput.equals("r")) {
+            if (playerInput.equals("kast") || playerInput.equals("k")) {
                 break;
             }
-            System.out.println("Ready when you are!");
+            System.out.println(pickLanguage[21]);
         }
     }
 
