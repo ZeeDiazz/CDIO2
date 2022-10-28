@@ -47,7 +47,7 @@ public class Game {
     public void nextTurn() {
         Player currentlyPlaying = getPlayingPlayer();
         boolean gameIsOver = false;
-        if (currentlyPlaying.Account.getBalance() >= 1100) {
+        if (currentlyPlaying.Account.getBalance() >= 3000) {
             this.winner = currentlyPlaying;
             gameIsOver = true;
         }
