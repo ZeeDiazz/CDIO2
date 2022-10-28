@@ -46,8 +46,8 @@ public class Program {
             }
         }
 
-        System.out.println("Congratulations " + game.getWinner().name + " you won!");
-        System.out.println("Better luck next time " + game.getLoser().name);
+        System.out.println(pickLanguage[17] + " " + game.getWinner().name + " " + pickLanguage[18]);
+        System.out.println(pickLanguage[19] + " " + game.getLoser().name);
     }
 
     private static void getPermissionToRoll(Player player) throws FileNotFoundException {
@@ -56,7 +56,7 @@ public class Program {
         while (true) {
             System.out.println(player.name +" "+ pickLanguage[20]);
             playerInput = in.nextLine().toLowerCase();
-            if (playerInput.equals("roll") || playerInput.equals("r")) {
+            if (playerInput.equals("kast") || playerInput.equals("k")) {
                 break;
             }
             System.out.println("Ready when you are!");
