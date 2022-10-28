@@ -14,7 +14,7 @@ public class FieldText {
         File danishfile = new File(Language + ".txt");
         Scanner scan = new Scanner(danishfile);
 
-        //Fordi der er 16 linjer
+        //Fordi der er 22 linjer
         String[] data = new String[22];
         for (int i = 0; i < data.length; i++) {
             scan.hasNextLine();

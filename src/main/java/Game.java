@@ -27,10 +27,13 @@ public class Game {
         String[] fieldNames = {"", "Tower", "Crater", "Palace Gates", "Cold Desert", "Walled City", "Monastery", "Black Cave", "Huts in the Mountain", "The Werewall", "The Pit", "Goldmine"};
         int[] fieldMoneyChange = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
         Effect[] fieldEffect = {Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.ExtraTurn, Effect.Nothing, Effect.Nothing};
-        for (int i = 0; i < 12; i++) {
-            this.fields[i] = new Field(pickLanguage[i], fieldMoneyChange[i], fieldEffect[i]);
+        for(int i = 1; i < pickLanguage.length; i++) {
+            if (i >= 7 && i <= 17) {
+                for (int j = 0; j < 12; j++) {
+                    this.fields[j] = new Field(pickLanguage[i], fieldMoneyChange[j], fieldEffect[j]);
+                }
+            }
         }
-
         this.currentPlayerIndex = 0;
     }
 
