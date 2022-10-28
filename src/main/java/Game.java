@@ -46,15 +46,26 @@ public class Game {
 
     public void nextTurn() {
         Player currentlyPlaying = getPlayingPlayer();
+        boolean gameIsOver = false;
         if (currentlyPlaying.Account.getBalance() >= 1100) {
             this.winner = currentlyPlaying;
+            gameIsOver = true;
+        }
+        else if (currentlyPlaying.Account.getBalance() < 0) {
+            this.loser = currentlyPlaying;
+            gameIsOver = true;
         }
 
         // Use bithacking to set the index to the next index
         this.currentPlayerIndex = (currentPlayerIndex + 1) & 1;
 
-        if (someoneHasWon()) {
-            this.loser = getPlayingPlayer();
+        if (gameIsOver) {
+            if (someoneHasWon()) {
+                this.loser = getPlayingPlayer();
+            }
+            else {
+                this.winner = getPlayingPlayer();
+            }
         }
     }
 
