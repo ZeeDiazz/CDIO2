@@ -2,7 +2,7 @@ Hvad er dit navn player 1?
 Hvad er dit navn player 2?
 Du rolled
 har nu X penge.
-Du er landet på feltet.
+Du er landet på feltet
 Du får en ekstra tur!
 Du har fundet Drønnings hjemmelige tårn, hun betaler dig 250 for at være stille.
 Du har fundet din vej til en ny karter, dog er det ulovligt, du skal betale 100 i bøde :(
@@ -20,3 +20,5 @@ har vundet spillet.
 Held og lykke næste gang
 indtast 'kast' (eller 'k') for at kaste terning
 Klar når du er!
+Du har nu
+penge

@@ -21,19 +21,17 @@ public class Game {
         this.players[0] = new Player(getPlayerName(pickLanguage[0], null), 1000);
         this.players[1] = new Player(getPlayerName(pickLanguage[1], null), 1000);
 
-        this.fields = new Field[12];
+        this.fields = new Field[11];
 
-
-        String[] fieldNames = {"", "Tower", "Crater", "Palace Gates", "Cold Desert", "Walled City", "Monastery", "Black Cave", "Huts in the Mountain", "The Werewall", "The Pit", "Goldmine"};
-        int[] fieldMoneyChange = {0, 250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
+        int[] fieldMoneyChange = {250, -100, 100, -20, 180, 0, -70, 60, -80, -50, 650};
         Effect[] fieldEffect = {Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.Nothing, Effect.ExtraTurn, Effect.Nothing, Effect.Nothing};
-        for(int i = 1; i < pickLanguage.length; i++) {
-            if (i >= 7 && i <= 17) {
-                for (int j = 0; j < 12; j++) {
-                    this.fields[j] = new Field(pickLanguage[i], fieldMoneyChange[j], fieldEffect[j]);
-                }
-            }
+
+        for (int j = 0; j < 11; j++) {
+            //it is j+6, because fieldtext, start on line 7
+            this.fields[j] = new Field(pickLanguage[j+6], fieldMoneyChange[j], fieldEffect[j]);
         }
+
+
         this.currentPlayerIndex = 0;
     }
 

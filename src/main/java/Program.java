@@ -31,17 +31,18 @@ public class Program {
             // Get the result of the dice roll and the corresponding field
             cup.roll();
             int rollSum = cup.getSum();
-            Field landedOn = game.getField(rollSum - 1);
+            //index 1 findes ikke derfor trækker man 2 fra
+            Field landedOn = game.getField(rollSum - 2);
 
             // Inform the player of the place they landed
             System.out.println(pickLanguage[2] + " " +  cup.toString());
             showFieldInfo(landedOn);
 
             currentlyPlaying.Account.updateBalance(landedOn.getMoneyChange());
-            System.out.printf("You now have %d money\n\n", currentlyPlaying.Account.getBalance());
+            System.out.printf(pickLanguage[22]+ " %d " + pickLanguage[23]+"\n\n", currentlyPlaying.Account.getBalance());
 
             if (landedOn.getEffect() == Effect.ExtraTurn) {
-                System.out.println("You get an extra turn!");
+                System.out.println(pickLanguage[5]);
             }
             else {
                 // Tell the game, the player has ended their turn
@@ -68,7 +69,8 @@ public class Program {
         }
     }
 
-    private static void showFieldInfo(Field field) {
-        System.out.printf("You landed on %s and is paid %d\n", field.getName(), field.getMoneyChange());
+    private static void showFieldInfo(Field field) throws FileNotFoundException {
+        String[] pickLanguage = text.setPickLanguage("Dansk");
+        System.out.printf(pickLanguage[4]+ " %s " + pickLanguage[23] + " %d\n", field.getName(), field.getMoneyChange());
     }
 }
